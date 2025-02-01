@@ -12,7 +12,7 @@ import { JWT_SECRET } from './jwt-secret';
     ConfigModule,
     JwtModule.registerAsync({
       useFactory: async (configService: ConfigService) => ({
-        secret: configService.getOrThrow('JWT_SECRET'),
+        secret: configService.get(JWT_SECRET),
         signOptions: { expiresIn: '1h' },
       }),
       inject: [ConfigService],
